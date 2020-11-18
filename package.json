@@ -1,6 +1,6 @@
 {
   "name": "angularjs-popper2x-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Flexible AngularJS Directive for positioning and controlling pop-up like elements",
   "main": "index.js",
   "scripts": {
