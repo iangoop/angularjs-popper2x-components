@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple usage</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js" ></script>
+    <script src="https://code.angularjs.org/1.8.0/angular.min.js" ></script>
+    <script src="../../dist/popper2x-components.min.js" ></script>
+    <script>
+        (function() {
+            angular.module('demo',['popupExt'])
+        })();
+    </script>
+    <!-- Style got from Popper tutorial page -->
+    <style>
+
+        .p_tooltip {
+            background: #333;
+            color: white;
+            font-weight: bold;
+            padding: 4px 8px;
+            font-size: 13px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .p_tooltip[data-show] {
+            display: block;
+        }
+
+        .arrow,
+        .arrow::before {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            z-index: -1;
+        }
+
+        .arrow::before {
+            content: '';
+            transform: rotate(45deg);
+            background: #333;
+        }
+
+        .p_tooltip[data-popper-placement^='top'] > .arrow {
+            bottom: -4px;
+        }
+
+        .p_tooltip[data-popper-placement^='bottom'] > .arrow {
+            top: -4px;
+        }
+
+        .p_tooltip[data-popper-placement^='left'] > .arrow {
+            right: -4px;
+        }
+
+        .p_tooltip[data-popper-placement^='right'] > .arrow {
+            left: -4px;
+        }
+    </style>
+</head>
+<body ng-app="demo">
+    <button id="button" aria-describedby="tooltip" tooltip="#tooltip">I'm a button</button>
+    <div id="tooltip" class="p_tooltip" role="tooltip">
+        I'm a tooltip
+        <div class="arrow" data-popper-arrow></div>
+    </div>
+</body>
+</html>

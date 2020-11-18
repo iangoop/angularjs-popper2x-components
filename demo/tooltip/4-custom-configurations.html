@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple usage</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" ></script>
+    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js" ></script>
+    <script src="https://code.angularjs.org/1.8.0/angular.min.js" ></script>
+    <script src="../../dist/popper2x-components.min.js" ></script>
+    <script>
+        (function() {
+            angular.module('demo',['popupExt'])
+                .controller('ctrl',function($scope) {
+                    var vm = this;
+
+                    var modifiers = {
+                        modifiers: [
+                            {
+                                name: 'offset',
+                                options: {
+                                    offset: [0, 8],
+                                },
+                            },
+                        ],
+                        controlTabOrder: false
+                    }
+
+                    vm.choose = [
+                        angular.extend({},modifiers,{placement: 'bottom'}),
+                        angular.extend({},modifiers,{placement: 'right'})
+                    ];
+                    vm.options = vm.choose[0];
+
+                    return vm;
+                })
+        })();
+    </script>
+    <style>
+
+        .p_tooltip {
+            background: #333;
+            color: white;
+            font-weight: bold;
+            padding: 4px 8px;
+            font-size: 13px;
+            border-radius: 4px;
+            display: none;
+        }
+
+        .p_tooltip[data-show] {
+            display: block;
+        }
+
+        .arrow,
+        .arrow::before {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            z-index: -1;
+        }
+
+        .arrow::before {
+            content: '';
+            transform: rotate(45deg);
+            background: #333;
+        }
+
+        .p_tooltip[data-popper-placement^='top'] > .arrow {
+            bottom: -4px;
+        }
+
+        .p_tooltip[data-popper-placement^='bottom'] > .arrow {
+            top: -4px;
+        }
+
+        .p_tooltip[data-popper-placement^='left'] > .arrow {
+            right: -4px;
+        }
+
+        .p_tooltip[data-popper-placement^='right'] > .arrow {
+            left: -4px;
+        }
+    </style>
+</head>
+<body ng-app="demo" ng-controller="ctrl as c">
+    <label>
+        <input type="radio" ng-model="c.options" ng-value="c.choose[0]" />
+        Placement bottom
+    </label>
+    <label>
+        <input type="radio" ng-model="c.options" ng-value="c.choose[1]" />
+        Placement right
+    </label>
+    <button id="button" aria-describedby="tooltip" tooltip=".p_tooltip" config="c.options">My button</button>
+    <div class="p_tooltip" role="tooltip">
+        My tooltip
+        <div class="arrow" data-popper-arrow></div>
+    </div>
+</body>
+</html>
