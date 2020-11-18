@@ -27,7 +27,7 @@ angular.module('myapp', ['popupExt'])
 
 ## Usage
 - Basic usage example
-    - Tooltip
+    - [Tooltip](#tooltip)
     ```html
       <button id="button" aria-describedby="tooltip" tooltip="#tooltip">I'm a button</button>
       <div id="tooltip" class="p_tooltip" role="tooltip">
@@ -35,7 +35,7 @@ angular.module('myapp', ['popupExt'])
           <div class="arrow" data-popper-arrow></div>
       </div>
     ```
-    - Dropdown
+    - [Dropdown](#dropdown)
     ```html
       <button type="button" dropdown="#dropdown">I'm a button</button>
       <div id="dropdown">I'm a dropdown</div>
