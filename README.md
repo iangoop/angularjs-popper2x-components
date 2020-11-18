@@ -97,7 +97,7 @@ You can check out all [popper custom modifiers](https://popper.js.org/docs/v2/mo
 ```
 
 ## Dropdown
-Use the dropdown directive by adding the property `tooltip` to your HTML element.
+Use the dropdown directive by adding the property `dropdown` to your HTML element.
 The value of that property will be the selector to the custom dropdown panel
 that you'd like to show. 
 ```html
@@ -122,7 +122,7 @@ to close the dropdown. If you want the dropdown to close when clicking the eleme
 ```
 Just like the tooltip directive, you can inform another selector that will be the target of the dropdown, instead of the button itself.
 ```html
-    <!-- will position element with id="tooltip" according to the boundaries of element with id="target" -->
+    <!-- will position element with id="dropdown" according to the boundaries of element with id="target" -->
     <div id="target">
         <button type="button" tooltip="#dropdown" target="#target"></button>
     </div>
@@ -133,7 +133,6 @@ Just like the tooltip directive, you can inform another selector that will be th
 Additionally, you can use the property config to override popper configurations as well as the directive standards.
 You can check out all [popper custom modifiers](https://popper.js.org/docs/v2/modifiers/) and alter the popup configurations and behaviour.
 ```js
-    /* you can find the full example in demo folder */
     angular.module('demo',['popupExt'])
         .controller('ctrl',function($scope) {
             
@@ -168,7 +167,7 @@ You can check out all [popper custom modifiers](https://popper.js.org/docs/v2/mo
     </div>
 ```
 > Flexibility is a double-edged sword. Depending on the order you place your dropdown button and container triggered by it, the tab order can become a bit tricky, 
-> hence the directive takes control of the tabindex by default. You can override it if you'd like to define your own tabindex or if you tie the elements in a progressive order,
+> hence the directive takes control of the tabindex by default. You can override this behaviour if you'd like to define your own tabindex or if you tie the elements in a progressive order,
 > to do so set the property `controlTabOrder` in the config to false.
 
 ## Build
